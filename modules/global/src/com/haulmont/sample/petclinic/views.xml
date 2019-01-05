@@ -26,4 +26,7 @@
         <property name="owner"
                   view="_local"/>
     </view>
+    <view entity="petclinic_Specialty" name="specialty-with-vets" extends="_local">
+        <property name="vets" view="_minimal"/>
+    </view>
 </views>

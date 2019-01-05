@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-caption="msg://editorCaption"
-focusComponent="fieldGroup"
-messagesPack="com.haulmont.sample.petclinic.web.vet.specialty">
-<data>
-    <instance id="specialtyCt"
-      class="com.haulmont.sample.petclinic.entity.vet.Specialty"
-      view="_local">
-        <loader/>
-    </instance>
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.vet.specialty">
+    <data>
+        <instance id="specialtyDc"
+                  class="com.haulmont.sample.petclinic.entity.vet.Specialty"
+                  view="specialty-with-vets">
+            <loader/>
+            <collection id="vetsDc" property="vets"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="specialtyDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <groupBox id="vetsBox" caption="msg://com.haulmont.sample.petclinic.entity.vet/Specialty.vets" stylename="light">
+            <table id="vetsTable" dataContainer="vetsDc" width="100%" height="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="firstName"/>
+                    <column id="lastName"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="vetsTable.add"/>
+                    <button action="vetsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
 
-</data>
-
-<dialogMode height="600"
-  width="800"/>
-
-<layout expand="editActions" spacing="true">
-    <form id="fieldGroup" dataContainer="specialtyCt">
-        <column width="250px">
-            <textField property="name"/>
-        </column>
-    </form>
-
-<hbox id="editActions" spacing="true">
+        <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
         </hbox>
-</layout>
+    </layout>
 </window>
