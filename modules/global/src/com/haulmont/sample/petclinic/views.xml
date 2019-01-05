@@ -20,13 +20,26 @@
     </view>
     <view class="com.haulmont.sample.petclinic.entity.pet.Pet"
           extends="_local"
-          name="pet-with-owner-and-type">
+          name="pet-with-owner-and-type-and-memberships">
         <property name="type"
                   view="_minimal"/>
         <property name="owner"
                   view="_local"/>
+        <property name="insurancesMemberships"
+                  view="insuranceMembership-with-pet-and-insurance-company"/>
     </view>
     <view entity="petclinic_Specialty" name="specialty-with-vets" extends="_local">
         <property name="vets" view="_minimal"/>
+    </view>
+    <view entity="petclinic_InsuranceCompany" name="insuranceCompany-with-memberships" extends="_local">
+        <property name="memberships" view="_base">
+            <property name="pet" view="_minimal"/>
+            <property name="insuranceCompany" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="petclinic_InsuranceMembership" name="insuranceMembership-with-pet-and-insurance-company"
+          extends="_local">
+        <property name="pet" view="_minimal"/>
+        <property name="insuranceCompany" view="_minimal"/>
     </view>
 </views>

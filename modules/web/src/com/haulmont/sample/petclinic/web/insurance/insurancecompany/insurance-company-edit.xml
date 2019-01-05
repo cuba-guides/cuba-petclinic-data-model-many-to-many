@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.insurance.insurancecompany">
+    <data>
+        <instance id="insuranceCompanyDc"
+                  class="com.haulmont.sample.petclinic.entity.insurance.InsuranceCompany"
+                  view="insuranceCompany-with-memberships">
+            <loader/>
+            <collection id="membershipsDc" property="memberships"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="insuranceCompanyDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <groupBox id="membershipsBox"
+                  caption="msg://com.haulmont.sample.petclinic.entity.insurance/InsuranceCompany.memberships" stylename="light">
+            <table id="membershipsTable" dataContainer="membershipsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="pet"/>
+                    <column id="validFrom"/>
+                    <column id="validUntil"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="membershipsTable.create"/>
+                    <button action="membershipsTable.edit"/>
+                    <button action="membershipsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
