@@ -3,59 +3,62 @@
         caption="msg://editorCaption"
         focusComponent="form"
         messagesPack="com.haulmont.sample.petclinic.web.pet.pet">
-  <data>
-    <instance id="petDc"
-              class="com.haulmont.sample.petclinic.entity.pet.Pet"
-              view="pet-with-owner-and-type-and-memberships">
-      <loader/>
-      <collection id="insurancesMembershipsDc" property="insurancesMemberships"/>
-    </instance>
-  </data>
-  <dialogMode height="600"
-              width="800"/>
-  <layout expand="editActions" spacing="true">
-    <form id="form" dataContainer="petDc">
-      <column width="250px">
-        <textField id="nameField" property="name"/>
-        <textField id="identificationNumberField" property="identificationNumber"/>
-        <dateField id="birthDateField" property="birthDate"/>
-        <pickerField id="typeField" property="type">
-          <actions>
-            <action id="lookup" type="picker_lookup"/>
-            <action id="clear" type="picker_clear"/>
-          </actions>
-        </pickerField>
-        <pickerField id="ownerField" property="owner">
-          <actions>
-            <action id="lookup" type="picker_lookup"/>
-            <action id="clear" type="picker_clear"/>
-          </actions>
-        </pickerField>
-      </column>
-    </form>
-    <groupBox id="insurancesMembershipsBox"
-              caption="msg://com.haulmont.sample.petclinic.entity.pet/Pet.insurancesMemberships" stylename="light">
-      <table id="insurancesMembershipsTable" dataContainer="insurancesMembershipsDc" width="100%" height="200px">
-        <actions>
-          <action id="create" type="create"/>
-          <action id="edit" type="edit"/>
-          <action id="remove" type="remove"/>
-        </actions>
-        <columns>
-          <column id="insuranceCompany"/>
-          <column id="validFrom"/>
-          <column id="validUntil"/>
-        </columns>
-        <buttonsPanel>
-          <button action="insurancesMembershipsTable.create"/>
-          <button action="insurancesMembershipsTable.edit"/>
-          <button action="insurancesMembershipsTable.remove"/>
-        </buttonsPanel>
-      </table>
-    </groupBox>
-    <hbox id="editActions" spacing="true">
-      <button action="windowCommitAndClose"/>
-      <button action="windowClose"/>
-    </hbox>
-  </layout>
+    <data>
+        <instance id="petDc"
+                  class="com.haulmont.sample.petclinic.entity.pet.Pet"
+                  view="pet-with-owner-and-type-and-memberships">
+            <loader/>
+            <collection id="insurancesMembershipsDc" property="insurancesMemberships"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="petDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+                <textField id="identificationNumberField" property="identificationNumber"/>
+                <dateField id="birthDateField" property="birthDate"/>
+                <pickerField id="typeField" property="type">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="ownerField" property="owner">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <groupBox id="insurancesMembershipsBox"
+                  caption="msg://com.haulmont.sample.petclinic.entity.pet/Pet.insurancesMemberships" stylename="light">
+            <table id="insurancesMembershipsTable"
+                   dataContainer="insurancesMembershipsDc"
+                   width="100%"
+                   height="200px">
+                <actions>
+                    <action id="addInsuranceCompany" caption="msg://addInsuranceCompany" icon="ADD_ACTION"/>
+                    <action id="edit" type="edit" openType="DIALOG"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="insuranceCompany"/>
+                    <column id="validFrom" />
+                    <column id="validUntil" />
+                </columns>
+                <buttonsPanel>
+                    <button action="insurancesMembershipsTable.addInsuranceCompany" />
+                    <button action="insurancesMembershipsTable.edit"/>
+                    <button action="insurancesMembershipsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
 </window>
