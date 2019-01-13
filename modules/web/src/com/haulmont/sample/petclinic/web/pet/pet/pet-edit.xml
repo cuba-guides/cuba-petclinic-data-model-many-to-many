@@ -38,20 +38,19 @@
             <table id="insurancesMembershipsTable"
                    dataContainer="insurancesMembershipsDc"
                    width="100%"
+                   editable="true"
                    height="200px">
                 <actions>
                     <action id="addInsuranceCompany" caption="msg://addInsuranceCompany" icon="ADD_ACTION"/>
-                    <action id="edit" type="edit" openType="DIALOG"/>
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
                     <column id="insuranceCompany"/>
-                    <column id="validFrom" />
-                    <column id="validUntil" />
+                    <column id="validFrom" editable="true"/>
+                    <column id="validUntil" editable="true"/>
                 </columns>
                 <buttonsPanel>
                     <button action="insurancesMembershipsTable.addInsuranceCompany" />
-                    <button action="insurancesMembershipsTable.edit"/>
                     <button action="insurancesMembershipsTable.remove"/>
                 </buttonsPanel>
             </table>
