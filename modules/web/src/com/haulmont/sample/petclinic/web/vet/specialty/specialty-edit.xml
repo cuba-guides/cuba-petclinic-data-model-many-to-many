@@ -10,16 +10,21 @@
             <loader/>
             <collection id="vetsDc" property="vets"/>
         </instance>
+
     </data>
+
     <dialogMode height="600"
                 width="800"/>
+
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="specialtyDc">
             <column width="250px">
                 <textField id="nameField" property="name"/>
             </column>
         </form>
-        <groupBox id="vetsBox" caption="msg://com.haulmont.sample.petclinic.entity.vet/Specialty.vets" stylename="light">
+
+        <groupBox id="vetsBox" caption="msg://com.haulmont.sample.petclinic.entity.vet/Specialty.vets"
+                  stylename="light">
             <table id="vetsTable" dataContainer="vetsDc" width="100%" height="100%">
                 <actions>
                     <action id="add" type="add"/>
@@ -35,7 +40,6 @@
                 </buttonsPanel>
             </table>
         </groupBox>
-
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

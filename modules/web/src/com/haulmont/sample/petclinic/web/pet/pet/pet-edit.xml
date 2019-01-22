@@ -10,27 +10,35 @@
             <loader/>
             <collection id="insurancesMembershipsDc" property="insurancesMemberships"/>
         </instance>
+
+        <collection id="ownersDc" class="com.haulmont.sample.petclinic.entity.owner.Owner" view="_base">
+            <loader>
+                <query>
+                    select e from petclinic_Owner e
+                </query>
+            </loader>
+        </collection>
+
+        <collection id="typesDc" class="com.haulmont.sample.petclinic.entity.pet.PetType" view="_base">
+            <loader>
+                <query>
+                    select e from petclinic_PetType e order by e.name
+                </query>
+            </loader>
+        </collection>
     </data>
+
     <dialogMode height="600"
                 width="800"/>
+
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="petDc">
             <column width="250px">
                 <textField id="nameField" property="name"/>
                 <textField id="identificationNumberField" property="identificationNumber"/>
                 <dateField id="birthDateField" property="birthDate"/>
-                <pickerField id="typeField" property="type">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-                <pickerField id="ownerField" property="owner">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
+                <lookupPickerField property="type" optionsContainer="typesDc"/>
+                <lookupPickerField property="owner" optionsContainer="ownersDc"/>
             </column>
         </form>
         <groupBox id="insurancesMembershipsBox"
@@ -55,6 +63,7 @@
                 </buttonsPanel>
             </table>
         </groupBox>
+
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

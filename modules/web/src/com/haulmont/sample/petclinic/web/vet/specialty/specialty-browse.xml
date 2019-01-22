@@ -24,11 +24,12 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="specialtiesTable"
-                    width="100%"
-                    dataContainer="specialtiesDc">
+                    dataContainer="specialtiesDc"
+                    width="100%">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
+                <action id="create" type="create" openType="DIALOG"/>
+                <action id="edit" type="edit"
+                        openType="DIALOG"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
