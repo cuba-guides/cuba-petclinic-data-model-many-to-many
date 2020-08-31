@@ -1,5 +1,6 @@
 package com.haulmont.sample.petclinic.entity.insurance;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.sample.petclinic.entity.pet.Pet;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Table(name = "PETCLINIC_INSURANCE_MEMBERSHIP")
 @Entity(name = "petclinic_InsuranceMembership")
+@NamePattern("%s %s|pet,insuranceCompany")
 public class InsuranceMembership extends StandardEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
